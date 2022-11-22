@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tempconvert</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ĐỘ C</th>
+        <th>ĐỘ F</th>
+        <th>ĐỘ KEVIN</th>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" id="C" name="C" placeholder="nhập độ c" onkeydown="changeauto();">
+        </td>
+        <td>
+            <input type="text" id="F" name="F">
+        </td>
+        <td>
+            <input type="text" id="K" name="KEVIN">
+        </td>
+    </tr>
+</table>
+<script>
+
+
+    function changeauto() {
+        let input = parseFloat(document.getElementById("C").value);
+        let temp = function (C){
+            this.C = C;
+            this.Fahrenheit = function (){
+                return ((this.C*1.8)+32);
+            }
+            this.Kevin = function (){
+                return (this.C + 273.15);
+            }
+            this.changeC = function (){
+                this.C = C;
+            }
+        }
+        let a = new temp(input);
+        let change = a.changeC(input);
+        console.log(change);
+        document.getElementById("F").value= a.Fahrenheit();
+        document.getElementById("K").value= a.Kevin();
+    }
+
+
+</script>
+</body>
+</html>
